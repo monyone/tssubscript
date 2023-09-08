@@ -1,17 +1,17 @@
 # tssubscript
 
-MPEG-TS の PSI/SI/Supermiose/DSM-CC のみを エンコード済みの MPEG-TS に張り付けるツールです。
+元データの MPEG-TS に頂上されている PSI/SI/Supermiose/DSM-CC を エンコード済みの MPEG-TS に張り付けるツールです。
 
 ## 使用方法
 
 ```bash
-tsreplace -i <入力TSファイル> -m <貼り付け元メタデータTSファイル> -o <出力TSファイル>
+tssubscript -i <入力TSファイル> -m <貼り付け元メタデータTSファイル> -o <出力TSファイル>
 ```
 
 また、パイプを使ってエンコードしながら張り付ける事もできます。
 
 ```bash
-エンコードコマンド | tsreplace -m <貼り付け元メタデータTSファイル> -o <出力TSファイル>
+エンコードコマンド | tssubscript -m <貼り付け元メタデータTSファイル> -o <出力TSファイル>
 ```
 
 ## オプション
