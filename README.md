@@ -1,6 +1,6 @@
 # tssubscript
 
-元データの MPEG-TS に頂上されている PSI/SI/Supermiose/DSM-CC を エンコード済みの MPEG-TS に張り付けるツールです。
+元データの MPEG-TS に重畳された メタデータ を エンコード済みの MPEG-TS に張り付けるツールです。
 
 ## 使用方法
 
@@ -16,15 +16,15 @@ tssubscript -i <入力TSファイル> -m <貼り付け元メタデータTSファ
 
 ## オプション
 
-### -i, --input <path>
+### -i, --input &lt;path&gt;
 
 入力TSファイルのファイルパス。省略した場合には標準入力から受け取ります。
 
-### -o, --output <path>
+### -o, --output &lt;path&gt;
 
 出力TSファイルのファイルパス。省略した場合には標準出力に出力します。
 
-### -m, --metadata <path>
+### -m, --metadata &lt;path&gt;
 
 メタデータTSファイルのファイルパス。省略した場合にはメタデータを張り付けません。
 
