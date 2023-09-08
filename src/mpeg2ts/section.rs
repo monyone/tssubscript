@@ -23,7 +23,7 @@ pub fn current_next_indicator(section: &Section) -> bool {
 pub fn crc32(section: &Section) -> u32 {
   let mut crc = 0xFFFFFFFFu32;
   for byte in section {
-    for i  in 7u8..=0u8 {
+    for i  in (0u8..=7u8).rev() {
       let bit: u8 = (byte & (1u8 << i)) >> i;
       let c = if (crc & 0x80000000u32) != 0 { 1u8 } else { 0u8 };
 
