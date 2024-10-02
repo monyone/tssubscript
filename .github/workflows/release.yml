@@ -26,3 +26,5 @@ jobs:
           restore-keys: ${{ runner.os }}-cargo-
       - name: Build
         run: cargo build --release
+      - name: Run tests
+        run: cargo test --verbose
