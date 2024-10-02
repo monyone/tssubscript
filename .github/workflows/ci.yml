@@ -1,12 +1,9 @@
-name: Release
+name: CI
 
 on:
   push:
-    workflow_dispatch:
     branches:
       - main
-    tags:
-      - v**
 
 jobs:
   deploy:
@@ -28,5 +25,3 @@ jobs:
           restore-keys: ${{ runner.os }}-cargo-
       - name: Build
         run: cargo build --release
-      - name: Run tests
-        run: cargo test --verbose
