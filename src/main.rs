@@ -36,7 +36,7 @@ fn main() {
   let mut replace_pmt_streams: HashMap<u16, (u8, u16, Vec<u8>)> = HashMap::new();
 
   let mut meta_queue = VecDeque::new();
-  if let Some(meta_file_path) = meta_file_path{
+  if let Some(meta_file_path) = meta_file_path {
     let Ok(meta) = File::open(meta_file_path) else {
       eprintln!("failed to open metadata ts file");
       exit(1);
@@ -137,7 +137,10 @@ fn main() {
         }
       };
     }
-  }
+  } else {
+    eprintln!("Please specify metadata file");
+    exit(1);
+  };
   let Some(pat_transport_stream_id) = pat_transport_stream_id else {
     eprintln!("failed to detect transport stream id");
     exit(1);
