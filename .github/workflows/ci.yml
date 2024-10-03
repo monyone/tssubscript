@@ -7,6 +7,23 @@ on:
 
 jobs:
   ci:
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-linux-musl
+          - x86_64-pc-windows-msvc
+          - x86_64-apple-darwin
+          - aarch64-apple-darwin
+        include:
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+          - target: x86_64-apple-darwin
+            os: macos-latest
+          - target: aarch64-apple-darwin
+            os: macos-latest
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,4 +41,9 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
       - name: Build
-        run: cargo build --release
+        run: cargo build --release --target=${{matrix.target}}
+      - name: Save
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{github.sha}}-${{matrix.target}}-artifacts
+          path: target/${{matrix.target}}/release/tssubscript
